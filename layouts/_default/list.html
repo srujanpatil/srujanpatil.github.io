@@ -1,0 +1,23 @@
+{{ define "main" }}
+    {{ if eq ($.Section) "blog" }}
+        <h3>Blogs</h3>
+        <p>A list of my musings and more... You can also browse them by <a href="/tags">tags</a> or <a href="/categories">categories</a>.</p>
+    {{ else }}
+        <h3>{{ .Title }}</h3>
+    {{ end }}
+    <div class="blogs">
+        {{ range .Paginator.Pages }}
+            <div class="single">
+                <div class="date">
+                    <span class="day">{{ .Date.Format "2" }}</span>
+                    <span class="year">{{ .Date.Format "Jan 2006" }}</span>
+                </div>
+                <div class="main">
+                    <h4 class="title"><a href="{{ .Permalink }}">{{ .Title }}</a><br></h4>
+                    <p class="desc">{{ .Summary | truncate 200 }}</p>
+                </div>
+            </div>
+        {{ end }}
+    </div>
+    {{ template "_internal/pagination.html" . }}
+{{ end }}

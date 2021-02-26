@@ -1,0 +1,29 @@
+{{ define "main" }}
+    <div class="blog">
+        <h3>{{ .Title }}</h3>
+        <div class="lastmod-date">{{ .Lastmod.Format "2 Jan 2006" }}</div>
+        {{ .Content }}
+        <div class="taxonomy">
+            {{ if ne .Type "page" }}
+                {{ if gt .Params.tags 0 }}
+                    <ul class="flat">
+                        {{ range .Params.tags }}
+                        <li><a id='tags' href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+                        {{ end }}
+                    </ul>
+                {{ end }}
+            {{ end }}
+        </div>
+        <div class="taxonomy">
+            {{ if ne .Type "page" }}
+                {{ if gt .Params.categories 0 }}
+                    <ul class="flat">
+                        {{ range .Params.categories }}
+                        <li><a id='categories' href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+                        {{ end }}
+                    </ul>
+                {{ end }}
+            {{ end }}
+        </div>
+    </div>
+{{ end }}

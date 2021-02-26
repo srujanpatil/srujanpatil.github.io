@@ -1,0 +1,23 @@
+baseURL: 'https://srujanpatil.github.io/'
+languageCode: en-us
+title: Srujan
+paginate: 2
+
+params:
+  description: Srujan's Blog - Musings and more...
+  twitter_username: zrujan
+
+taxonomies:
+  tag: tags
+  categories: categories
+
+menu:
+  header:
+    - identifier: home
+      name: Home
+      url: /
+      weight: 1
+    - identifier: blog
+      name: Blog
+      url: /blog
+      weight: 2

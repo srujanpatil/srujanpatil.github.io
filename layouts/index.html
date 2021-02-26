@@ -1,0 +1,12 @@
+{{ define "main" }}
+    <div class="blog">
+        {{ .Content }}
+    </div>
+    <div class="now">
+        <h6>{{ dateFormat "2 Jan 2006" .Lastmod }}</h6>
+        <h4>What am I doing right now?</h4>
+        <div class="main">
+            {{ with .GetPage "Now" }}{{ .Content }}{{ end }}
+        </div>
+    </div>    
+{{ end }}
